@@ -1,6 +1,6 @@
 
 /**
- * jQuery hashparam - v2.0 - 01/05/2014
+ * jQuery hashparam - v2.0 - 01/02/2015
  * http://hashparam.wykapedia.org/
  * 
  * Copyright (c) 2014 wykaPedia [Brian Wyka]
@@ -10,7 +10,7 @@
 
 ;( function ($, $window, $document, undefined) {
 			 
-	var HASH_SYMBOL = "#",
+	var HASH_CHARACTER = "#",
 		NAME_VALUE_DELIMITER = "=",
 		PARAMETER_DELIMITER = "&",
 		ARRAY_PARAM_DELIMITER = "@@";
@@ -24,65 +24,13 @@
 	var formatNameValuePair = function (name, value) {
 		var nameValuePair;
 		
-		nameValuePair = encodeURIComponent($.trim(name));
+		nameValuePair = serializeName(name);
 		nameValuePair += NAME_VALUE_DELIMITER;
-		nameValurPair += serializeValue(value);
+		nameValuePair += serializeValue(value);
 		
 		return nameValuePair;
 	};
-	
-	/**
-	 * Serialize the value for URL serialization
-	 * @param Object - the value to serialize
-	 * @return String - the serialized value
-	 */
-	var serializeValue = function (value) {
-		var serializedValue;
-		
-		if ($.type(value) == "number") {
-			serializedValue = "{n}" + value;	
-		} else if ($.type(value) == "boolean") {
-			serializedValue = "{b}" + value;
-		} else if ($.type(value) == "date") {
-			serializedValue = "{d}" + value.getTime();
-		} else if ($.type(value) == "array") {
-			serializedValue = "{a}" + value.join(ARRAY_PARAM_DELIMITER);
-		} else if ($.type(value) == "string") {
-			serializedValue = "{s}" + value;
-		} else {
-			serializedValue = "{o}" + value; // TODO
-		}
-		serializedValue = encodeURIComponent(serializedValue);
-		
-		return serializedValue;
-	};
-	
-	/**
-	 * Unserialize the value from the URL
-	 * @param Object - the value to unserialize
-	 * @return String - the unserialized value
-	 */
-	var unserializeValue = function (value) {
-		var unserializedValue,
-			rawValue = value.substr(3);
-			
-		if (value.indexOf("{n}") == 0) {
-			unserializedValue = parseInt(rawValue);
-		} else if (value.indexOf("{b}") == 0) {
-			unserializedValue = new Boolean(rawValue);
-		} else if (value.indexOf("{d}") == 0) {
-			unserializedValue = new Date(parseInt(rawValue));
-		} else if (value.indexOf("{a}") == 0) {
-			unserializedValue = rawValue.split(ARRAY_PARAM_DELIMITER);
-		} else if (value.indexOf("{s}") == 0) {
-			unserializedValue = new String(rawValue);
-		} else {
-			unserializedValue = rawValue;
-		}
-		
-		return unserializedValue;
-	};
-	
+    
 	/**
 	 * Get a name, value pair from the given string
 	 * @param String - the name, value pair string
@@ -95,16 +43,71 @@
 		tokens = nameValuePairString.split(NAME_VALUE_DELIMITER);
 		
 		if (tokens.length == 2) {
-			nameValuePair['name'] = decodeURIComponent(tokens[0]);
-			nameValuePair['value'] = unserializeValue(decodeURIComponent(tokens[1]));
+			nameValuePair.name = unserializeName(tokens[0]);
+            nameValuePair.value = unserializeValue(tokens[1]);
 		} else if (tokens.length == 1) {
-			nameValuePair['name'] = decodeURIComponent(tokens[0]);
-			nameValuePair['value'] = "";
+			nameValuePair.name = unserializeName(tokens[0]);
+			nameValuePair.value = "";
 		} else {
 			nameValuePair = null;
 		}
 		
 		return nameValuePair;
+	};
+    
+	/**
+	 * Serialize the name for URL serialization
+	 * @param String - the name to serialize
+	 * @return String - the serialized name
+	 */
+	var serializeName = function (name) {
+		return encodeURIComponent($.trim(name));
+	};
+	
+	/**
+	 * Serialize the value for URL serialization
+	 * @param Object - the value to serialize
+	 * @return String - the serialized value
+	 */
+	var serializeValue = function (value) {
+        var replacer = function (k, v) {
+            if ($.type(this[k]) === "date") {
+                return "{hpDate=" + this[k].getTime() + "}";
+            }
+            return v;
+        };
+        var jsonString = JSON.stringify(value, replacer);
+		return encodeURIComponent(jsonString);
+	};
+    
+	/**
+	 * Unserialize the name from the URL
+	 * @param String - the name to unserialize
+	 * @return String - the unserialized name
+	 */
+	var unserializeName = function (name) {
+		return decodeURIComponent(name);
+	};
+	
+	/**
+	 * Unserialize the value from the URL
+	 * @param Object - the value to unserialize
+	 * @return String - the unserialized value
+	 */
+	var unserializeValue = function (value) {
+        var reviver = function (k, v) {
+            var regex = /\{hpDate=(.*)\}/;
+            if ($.type(v) === "string" && regex.test(v)) {
+                var matches = v.match(regex);
+                if (matches.length = 2) {
+                    var time = new Number(matches[1]).valueOf();
+                    return new Date(time);
+                }
+            }
+            return v;
+        };
+        var jsonString = decodeURIComponent(value);
+		return JSON.parse(jsonString, reviver);
 	};
 	
 	/**
@@ -133,7 +136,7 @@
 			nameValuePairs.push(nameValuePair);	
 		}
 		
-		$window.location.hash = HASH_SYMBOL + nameValuePairs.join(PARAMETER_DELIMITER);
+		$window.location.hash = HASH_CHARACTER + nameValuePairs.join(PARAMETER_DELIMITER);
 	};
 	
 	/**
@@ -169,7 +172,7 @@
 	var hasHashParam = function (name) {
 		var hasHashParam = false,
 			hashParamMap = getHashParamMap();
-		var hashParam = hashParamMap[name];
+		var hashParam = hashParamMap[$.trim(name)];
 		
 		if ((hashParam == null) || (hashParam === undefined)) {
 			hasHashParam = false;
@@ -193,7 +196,7 @@
 			
 		if (hasHashParam(name)) {
 			hashParamMap = getHashParamMap();
-			hashParam = hashParamMap[name];
+			hashParam = hashParamMap[$.trim(name)];
 		}
 		
 		return hashParam;
@@ -234,7 +237,7 @@
 	 * @param String - the name of the parameter to remove
 	 */
 	var clear = function (name) {
-		$window.location.hash = HASH_SYMBOL;
+		$window.location.hash = HASH_CHARACTER;
 	};
 	
 	/**
@@ -253,10 +256,19 @@
 		} else if (value) {
 			return setHashParam(nameOrMap, value);
 		} else if (nameOrMap) {
-			return getHashParam(nameOrMap);	
+			return getHashParam(nameOrMap);
 		} else {
-			return getHashParamMap();	
+			return getHashParamMap();
 		}
+	};
+    
+	/**
+	 * Determine if a particular hash parameter exists
+	 * @param String - the name of the parameter
+	 * @return Boolean - true if parameter exists, false otherwise
+	 */
+	$.fn.hashparam.exists = function (name) {
+		return hasHashParam(name);
 	};
 	
 	/**
