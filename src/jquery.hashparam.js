@@ -99,7 +99,7 @@
             var regex = /\{hpDate=(.*)\}/;
             if ($.type(v) === "string" && regex.test(v)) {
                 var matches = v.match(regex);
-                if (matches.length = 2) {
+                if (matches.length == 2) {
                     var time = new Number(matches[1]).valueOf();
                     return new Date(time);
                 }
@@ -234,9 +234,8 @@
 	
 	/**
 	 * Remove the given hash parameter
-	 * @param String - the name of the parameter to remove
 	 */
-	var clear = function (name) {
+	var clear = function () {
 		$window.location.hash = HASH_CHARACTER;
 	};
 	
