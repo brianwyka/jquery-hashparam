@@ -107,7 +107,12 @@
             return v;
         };
         var jsonString = decodeURIComponent(value);
-		return JSON.parse(jsonString, reviver);
+        try {
+            return JSON.parse(jsonString, reviver);
+        } catch (e) {
+            // Most likely a plain string
+            return jsonString;
+        }
 	};
 	
 	/**
