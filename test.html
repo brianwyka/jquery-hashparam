@@ -22,6 +22,7 @@
         <link rel="stylesheet" href="//brianwyka.github.io/jquery-hashparam/css/normalize.css">
         <link rel="stylesheet" href="//brianwyka.github.io/jquery-hashparam/vendor/foundation-5.4.6.custom/css/foundation.min.css">
         <link rel="stylesheet" href="//brianwyka.github.io/jquery-hashparam/css/main.css">
+        <link rel="stylesheet" href="//code.jquery.com/qunit/qunit-1.15.0.css">
         <script src="//brianwyka.github.io/jquery-hashparam/js/vendor/modernizr-2.6.2.min.js"></script>
         
     </head>
@@ -64,51 +65,13 @@
         <div class="row page-content">
             <div class="large-12 columns">
                 
-                <h2>#hashparam jQuery plugin</h2>
-                <h4 class="subheader">Thanks for stopping by.  Hopefully you find what you are loooking for, and if you don't, look somewhere else.</h4>
-                
-                <div class="spacer-small"></div>
-                
-                <p>#hashparam is a jQuery plugin which abstracts getting and setting hash parameters in the URL. 
-                    This plugin is very useful when using the hash portion of the URL for event handling through jQuery 
-                    as well as hash-based navigation.  This is an alternative to using request parameters which 
-                    require a full page reload when changing. With this plugin, all parameter changes can be handled 
-                    on the client-side and can be dispatched from there within your own custom javascript implementation.</p>
-                
-                <p>This plugin is used best in conjuction with <a href="http://benalman.com/projects/jquery-hashchange-plugin/" target="_blank">jQuery hashchange</a>.
-                <strong>!! Shoutout to Ben</strong></p>
+                <h2>QUnit Tests</h2>
+                <h4 class="subheader">Yes, we actually made sure it worked...</h4>
                 
                 <div class="spacer-medium"></div>
                 
-                <div class="row">
-                    <div class="large-6 columns">
-                        <div class="panel">
-                            <h4><a href="//brianwyka.github.io/jquery-hashparam/demo.html">Check out some examples</a></h4>
-                            <p>Yeah, we decided to make it easy for you</p>
-                        </div>
-                    </div>
-                    <div class="large-6 columns">
-                        <div class="panel">
-                            <h4><a href="//brianwyka.github.io/jquery-hashparam/docs.html">Superb documentation!</a></h4>
-                            <p>Say it with me: &quot;I came, I saw, I conquered!&quot;</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="row">
-                    <div class="large-6 columns">
-                        <div class="panel">
-                            <h4><a href="//brianwyka.github.io/jquery-hashparam/download.html">If you want it, come and get it!</a></h4>
-                            <p>Sorry, bad Selena Gomez reference, but you get it...</p>
-                        </div>
-                    </div>
-                    <div class="large-6 columns">
-                        <div class="panel">
-                            <h4><a href="//brianwyka.github.io/jquery-hashparam/about.html">Things change. Stay up to date.</a></h4>
-                            <p>Get the down low on the latest uploads</p>
-                        </div>
-                    </div>
-                </div>
+                <div id="qunit"></div>
+                <div id="qunit-fixture"></div>
                 
             </div>
         </div>
@@ -140,6 +103,7 @@
 		</div>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="//code.jquery.com/qunit/qunit-1.15.0.js"></script>
         <script>window.jQuery || document.write('<script src="//brianwyka.github.io/jquery-hashparam/js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
         <script src="//brianwyka.github.io/jquery-hashparam/vendor/foundation-5.4.6.custom/js/foundation.min.js"></script>
         <script src="//brianwyka.github.io/jquery-hashparam/js/plugins.js"></script>

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+    
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        
+        <title>Home | wykaPedia hashparam</title>
+
+        <meta name="keywords" content="jquery hash param,jquery hash,hash parameter,jquery hashparam,jquery param,jquery hash parameter,jquery hash parameters,jquery hashm">        
+        <meta name="description" content="#hashparam is a jQuery plugin which abstracts getting and setting hash parameters in the URL. 
+        This plugin is very useful when using the hash portion of the URL for event handling through jQuery 
+		as well as hash-based navigation.  This is an alternative to using request parameters which 
+        require a full page reload when changing. With this plugin, all parameter changes can be handled 
+        on the client-side and can be dispatched from there within your own custom javascript implementation.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="shortcut icon" href="//brianwyka.github.io/jquery-hashparam/favicon.ico" />
+        <link rel="stylesheet" href="//brianwyka.github.io/jquery-hashparam/css/normalize.css">
+        <link rel="stylesheet" href="//brianwyka.github.io/jquery-hashparam/vendor/foundation-5.4.6.custom/css/foundation.min.css">
+        <link rel="stylesheet" href="//brianwyka.github.io/jquery-hashparam/css/main.css">
+        <script src="//brianwyka.github.io/jquery-hashparam/js/vendor/modernizr-2.6.2.min.js"></script>
+        
+    </head>
+    
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+		<div class="contain-to-grid" id="nav-contain-to-grid">
+			<nav class="top-bar" data-topbar>
+				
+				<ul class="title-area">
+					<li class="name">
+						<h1>
+							<a href="/"> jQuery #hashparam </a>
+						</h1>
+					</li>
+					<li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
+				</ul>
+		
+				<section class="top-bar-section">
+		
+					<ul class="right">
+						<li class="divider"></li>
+						<li><a href="//brianwyka.github.io/jquery-hashparam/demo.html">Demo</a></li>
+						<li class="divider"></li>
+						<li><a href="//brianwyka.github.io/jquery-hashparam/docs.html">Docs</a></li>
+						<li class="divider"></li>
+						<li><a href="//brianwyka.github.io/jquery-hashparam/download.html">Download</a></li>
+						<li class="divider"></li>
+						<li><a href="//brianwyka.github.io/jquery-hashparam/about.html">About</a></li>
+					</ul>
+					
+				</section>
+				
+			</nav>
+		</div>
+
+        <div class="row page-content">
+            <div class="large-12 columns">
+                
+                <h2>Docs</h2>
+                <h4 class="subheader">Please see below for documentation on each of the available functions...</h4>
+                
+                <div class="function-doc">
+                    <div class="signature">
+                        <h4><code>$.fn.hashparam()</code></h4>
+                    </div>
+                    <p class="description">
+                        Retrieve all hash parameters in a map. <a href="#function=hashparam()">See example</a>
+                    </p>
+                    <div class="returns">
+                        <h5>Returns</h5>
+                        <div class="return">
+                            <span class="type"><em>Type:</em> <code>Map</code></span>
+                            <span class="doc">All hash parameters in a key/value pair map or <code>{}</code></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="function-doc">
+                    <div class="signature">
+                        <h4><code>$.fn.hashparam(name)</code></h4>
+                    </div>
+                    <p class="description">
+                        Retrieve an individual hash parameter. <a href="#function=hashparam(name)">See example</a>
+                    </p>
+                    <div class="returns">
+                        <h5>Returns</h5>
+                        <div class="return">
+                            <span class="type"><em>Type:</em> <code>String</code></span>
+                            <span class="doc">The value of the parameter</span>
+                        </div>
+                    </div>
+                    <div class="parameters">
+                        <h5>Parameters</h5>
+                        <div class="parameter">
+                            <span class="name">name</span>
+                            <span class="type"><em>Type:</em> <code>String</code></span>
+                            <span class="doc">The name of the parmater to retrieve</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="function-doc">
+                    <div class="signature">
+                        <h4><code>$.fn.hashparam(map)</code></h4>
+                    </div>
+                    <p class="description">
+                        For each key/value pair in the map, set a hash parameter. <a href="#function=hashparam(map)">See example</a>
+                    </p>
+                    <div class="parameters">
+                        <h5>Parameters</h5>
+                        <div class="parameter">
+                            <span class="name">map</span>
+                            <span class="type"><em>Type:</em> <code>Map</code></span>
+                            <span class="doc">A map of key/value pairs to set as hash parameters</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="function-doc">
+                    <div class="signature">
+                        <h4><code>$.fn.hashparam(name, value)</code></h4>
+                    </div>
+                    <p class="description">
+                        Set an individual hash parameter. <a href="#function=hashparam(name,value)">See example</a>
+                    </p>
+                    <div class="returns">
+                        <h5>Returns</h5>
+                        <div class="return">
+                            <span class="type"><em>Type:</em> <code>String</code></span>
+                            <span class="doc">The previous value of the parameter or <code>null</code></span>
+                        </div>
+                    </div>
+                    <div class="parameters">
+                        <h5>Parameters</h5>
+                        <div class="parameter">
+                            <span class="name">name</span>
+                            <span class="type"><em>Type:</em> <code>String</code></span>
+                            <span class="doc">The name of the parmater to set</span>
+                        </div>
+                        <div class="parameter">
+                            <span class="name">value</span>
+                            <span class="type"><em>Type:</em> <code>String</code> or <code>Number</code> or <code>Boolean</code></span>
+                            <span class="doc">The value of the parmater to set</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="function-doc">
+                    <div class="signature">
+                        <h4><code>$.fn.hashparam.remove(name)</code></h4>
+                    </div>
+                    <p class="description">
+                        Remove a specific hash parameter. <a href="#function=hashparam.remove(name)">See example</a>
+                    </p>
+                    <div class="returns">
+                        <h5>Returns</h5>
+                        <div class="return">
+                            <span class="type"><em>Type:</em> <code>String</code></span>
+                            <span class="doc">The value of the parameter before being removed or <code>null</code></span>
+                        </div>
+                    </div>
+                    <div class="parameters">
+                        <h5>Parameters</h5>
+                        <div class="parameter">
+                            <span class="name">name</span>
+                            <span class="type"><em>Type:</em> <code>String</code></span>
+                            <span class="doc">The name of the parameter to remove</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="function-doc">
+                    <div class="signature">
+                        <h4><code>$.fn.hashparam.clear()</code></h4>
+                    </div>
+                    <p class="description">
+                        Clear all hash parameters. <a href="#function=hashparam()">See example</a>
+                    </p>
+                    <div class="returns">
+                        <h5>Returns</h5>
+                        <div class="return">
+                            <span class="type"><em>Type:</em> <code>Map</code></span>
+                            <span class="doc">All previous key/value pairs before cleared or <code>{}</code></span>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+		<div class="row">
+			<div class="large-12 columns">
+			
+				<footer class="row">
+					<div class="large-12 columns">
+						<hr />
+						<div class="row">
+				
+							<div class="large-6 columns">
+								<p>&copy;2014 Brian Wyka</p>
+							</div>
+				
+							<div class="large-6 small-12 columns">
+								<ul class="inline-list right">
+                                	<li><a href="//brianwyka.github.io/jquery-hashparam/test.html">Test</a></li>
+									<li><a href="//brianwyka.github.io/jquery-hashparam/license.html">License</a></li>
+								</ul>
+							</div>
+				
+						</div>
+					</div>
+				</footer>
+				
+			</div>
+		</div>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="//brianwyka.github.io/jquery-hashparam/js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+        <script src="//brianwyka.github.io/jquery-hashparam/vendor/foundation-5.4.6.custom/js/foundation.min.js"></script>
+        <script src="//brianwyka.github.io/jquery-hashparam/js/plugins.js"></script>
+        <script src="//brianwyka.github.io/jquery-hashparam/js/plugin/jquery.hashparam.min.js"></script>
+        <script src="//brianwyka.github.io/jquery-hashparam/js/main.js"></script>
+		<script type="text/javascript">$(document).foundation();</script>
+
+    </body>
+    
