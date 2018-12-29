@@ -1,12 +1,12 @@
-# [wykaPedia hashparam](http://hashparam.wykapedia.org/)
+# [jQuery hashparam](https://brianwyka.github.io/jquery-hashparam/)
 
 hashparam is a jQuery plugin which abstracts getting and setting hash parameters in the URL.
 
 This plugin is very useful when using hash parameters for event handling through jQuery 
 as well as hash-based navigation.
 
-* Source: [jquery.hashparam.js](https://raw.githubusercontent.com/wykaPedia/jquery-hashparam/master/src/jquery.hashparam.js)
-* Homepage: [http://hashparam.wykapedia.org/](http://hashparam.wykapedia.org/)
+* Source: [jquery.hashparam.js](https://raw.githubusercontent.com/brianwyka/jquery-hashparam/master/src/jquery.hashparam.js)
+* Homepage: [https://brianwyka.github.io/jquery-hashparam/](hhttps://brianwyka.github.io/jquery-hashparam/)
 
 
 ## Quick start
@@ -17,8 +17,8 @@ as well as hash-based navigation.
 
 ## Documentation
 
-Take a look at the [documentation](http://hashparam.wykapedia.org/docs).
+Take a look at the [documentation](https://brianwyka.github.io/jquery-hashparam/docs).
 
 ## Unit Tests
 
-Check out the [QUnit test results](http://hashparam.wykapedia.org/test).
+Check out the [QUnit test results](https://brianwyka.github.io/jquery-hashparam/test).
